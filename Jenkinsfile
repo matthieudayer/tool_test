@@ -6,7 +6,6 @@ pipeline {
   stages {
     stage('Example') {
       steps {
-        sh 'node -v'
         sh 'npm -v'
       }
     }
