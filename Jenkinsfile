@@ -1,13 +1,13 @@
 pipeline {
-  agent none
+  agent any
+ 
+  tools {nodejs "NodeJS 10.15.3 LTS"}
+ 
   stages {
-    stage('Install dependencies') {
-      agent any
+    stage('Example') {
       steps {
-        nodejs('NodeJS 10.15.3 LTS') {
-          sh 'node -v'
-        }
-
+        sh 'node -v'
+        sh 'npm -v'
       }
     }
   }
