@@ -6,6 +6,10 @@ pipeline {
       steps {
         echo 'Installing dependencies'
         sh 'npm install'
+        nodejs(nodeJSInstallationName: 'NodeJS 10.15.3 LTS', configId: 'node-10.15.3') {
+          sh 'node -v'
+        }
+
       }
     }
     stage('Unit tests') {
