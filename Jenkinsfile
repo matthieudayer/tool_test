@@ -1,14 +1,16 @@
 pipeline {
-  agent {
-    node {
-      label 'NodeJS 10.15.3 LTS'
-    }
-
-  }
+  agent none
   stages {
-    stage('Initialization') {
+    stage('Install dependencies') {
       steps {
-        echo 'Inititializing..'
+        echo 'Installing dependencies'
+        sh 'npm install'
+      }
+    }
+    stage('Unit tests') {
+      steps {
+        echo 'Running unit tests'
+        sh 'ng test --code-coverage'
       }
     }
   }
