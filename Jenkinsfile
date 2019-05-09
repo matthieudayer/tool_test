@@ -4,16 +4,10 @@ node {
   env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
 	
   stage('Pull') {
-    if (env.BRANCH_NAME == 'develop') {
-      echo 'I only execute on the develop branch'
-      checkout scm
-      sh 'git status'
-      sh 'git rev-parse HEAD'
-    }
-    else {
-      echo 'I execute elsewhere: ${env.BRANCH_NAME}'
-    }
-  
+    checkout scm
+    echo "${env.BRANCH_NAME}"
+    sh 'git status'
+    sh 'git rev-parse HEAD'  
     sh 'node --version'
     sh 'npm --version'
     
@@ -30,14 +24,17 @@ node {
   }
   
   stage('Deploy') {
-    
+    if (env.BRANCH_NAME == 'develop') {
+      echo "Deploying to DEV platform"
+    } else if (env.BRANCH_NAME == 'master') {
+      echo "Deploying to PROD platform"
+    } else {
+      echo "${env.BRANCH_NAME}: not deploying"
+    }
+
   }
   
   stage('Report') {
-    
-  }
-  
-  stage('Push build') {
     
   }
 }
