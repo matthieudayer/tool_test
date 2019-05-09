@@ -8,6 +8,7 @@ node {
       echo 'I only execute on the develop branch'
       checkout scm
       sh 'git status'
+      sh 'git rev-parse HEAD'
     }
     else {
       echo 'I execute elsewhere: ${env.BRANCH_NAME}'
