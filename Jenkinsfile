@@ -6,13 +6,16 @@ node {
   stage('Pull') {
     if (env.BRANCH_NAME == 'develop') {
       echo 'I only execute on the develop branch'
+      checkout scm
+      sh 'git status'
     }
     else {
-      echo 'I execute elsewhere'
+      echo 'I execute elsewhere: ${env.BRANCH_NAME}'
     }
   
     sh 'node --version'
     sh 'npm --version'
+    
     //git branch: 'develop', url: 'https://github.com/29axe/tool_test.git'
   }
   
