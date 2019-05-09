@@ -1,4 +1,6 @@
 # HotmapsToolboxClient
+
+[![Build Status](https://153.109.124.203/job/tool_test_blueocean/job/develop/badge/icon)](https://153.109.124.203/job/tool_test_blueocean/job/develop/)
  
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
  
