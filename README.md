@@ -1,5 +1,7 @@
 # HotmapsToolboxClient
 
+![Build Status](https://vlheasilab.hevs.ch/buildStatus/icon?job=tool_test_blueocean%2Fmaster)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
 
 ## Development server
