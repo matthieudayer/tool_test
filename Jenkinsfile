@@ -15,9 +15,11 @@ node {
     
     //git branch: 'develop', url: 'https://github.com/29axe/tool_test.git'
     
-    sshPublisher(publishers: [sshPublisherDesc(configName: "hotmapsdev", transfers(execCommand: '''
-      echo "INFO: deploy $commitId"
-    ''')])
+    sshPublisher(publishers: [sshPublisherDesc(configName: "hotmapsdev", transfers(
+      execCommand: '''
+        echo "INFO: deploy $commitId"
+      ''', execTimeout: 120000, sourceFiles: '')]
+    )])
   }
   
   stage('Build') {
