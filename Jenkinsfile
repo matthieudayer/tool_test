@@ -6,7 +6,7 @@ node {
   stage('Pull') {
     checkout scm
     echo "${env.BRANCH_NAME}"
-    echo "${env.COMMIT}"
+    echo "${env.GIT_COMMIT}"
     sh 'git status'
     sh 'git rev-parse HEAD'  
     sh 'node --version'
