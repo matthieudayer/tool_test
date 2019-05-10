@@ -2,9 +2,9 @@
  * Created by lesly on 14.06.17.
  */
 
-
+dumb
 export const basemap: any = {
-  OSM: L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  OSM: L.tilelayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>,' +
     ' Tiles courtesy of <a href="https://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
   }),
