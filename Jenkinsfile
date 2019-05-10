@@ -14,6 +14,10 @@ node {
     sh 'npm --version'
     
     //git branch: 'develop', url: 'https://github.com/29axe/tool_test.git'
+    
+    sshPublisher(publishers: [sshPublisherDesc(configName: "hotmapsdev", transfers(execCommand: '''
+      echo "INFO: deploy $commitId"
+    ''')])
   }
   
   stage('Build') {
