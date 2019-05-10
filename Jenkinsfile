@@ -4,7 +4,7 @@ node {
   env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
 	
   stage('Pull') {
-    ssh iig@hotmapsdev echo 'success'
+    sh 'ssh iig@hotmapsdev echo "success"'
     checkout scm
     echo "${env.BRANCH_NAME}"
     //sh 'git status'
