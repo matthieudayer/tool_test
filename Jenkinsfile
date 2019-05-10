@@ -1,5 +1,5 @@
 node {
-  // environment vars
+  // environment vars 
   env.NODEJS_HOME = "${tool 'node10'}"
   env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
 	
