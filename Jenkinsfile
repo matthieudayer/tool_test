@@ -15,12 +15,12 @@ node {
   }
   
   stage('Build') {
-    //sh 'npm install'
-    //sh 'ng build'
+    sh 'npm install'
+    sh 'ng build'
   }
   
   stage('Test') {
-    //sh 'ng test --watch=false'
+    sh 'ng test --watch=false'
   }
   
   stage('Deploy') {
