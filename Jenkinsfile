@@ -25,7 +25,7 @@ node {
     sh 'npm install'
     sh 'ng build'
   }
-  
+   
   stage('Test') {
     sh 'ng test --watch=false'
   }
