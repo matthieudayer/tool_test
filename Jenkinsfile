@@ -27,7 +27,7 @@ node {
       execCommand: '''
           cd 
           touch $commitId
-        ''', execTimeout: 900000, sourceFiles: '')]
+        ''', execTimeout: 900000, sourceFiles: ''), failOnError: true, paramPublish:parameters("commitId")]
       )])
     } else if (env.BRANCH_NAME == 'master') {
       echo "Deploying to PROD platform"
