@@ -11,6 +11,9 @@ node {
     sh 'npm --version'
   }
   
+  // get commit id
+  env.COMMIT_ID = sh(returnStdout: true, script: 'git rev-parse HEAD')
+  
   stage('Build') {
     //sh 'npm install'
     //sh 'ng build'
@@ -31,14 +34,14 @@ node {
               sshTransfer(
                 execCommand: '''
                   cd 
-                  touch "${commitId}.txt"
+                  touch "${COMMIT_ID}.txt"
                 ''', 
                 execTimeout: 900000, 
                 sourceFiles: ''
               )
             ], 
             failOnError: true, 
-            paramPublish: parameters("commitId")
+            paramPublish: parameters("COMMIT_ID")
           )
         ]
       )
