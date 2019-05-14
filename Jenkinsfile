@@ -6,19 +6,9 @@ node {
   stage('Pull') {
     checkout scm
     echo "${env.BRANCH_NAME}"
-    //sh 'git status'
     commitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
-    echo "commit id: ${commitId}"
     sh 'node --version'
     sh 'npm --version'
-    
-    //git branch: 'develop', url: 'https://github.com/29axe/tool_test.git'
-    
-    sshPublisher(publishers: [sshPublisherDesc(configName: "hotmapsdev", transfers: [sshTransfer(
-      execCommand: '''
-        echo "INFO: deploy $commitId"
-      ''', execTimeout: 120000, sourceFiles: '')]
-    )])
   }
   
   stage('Build') {
@@ -33,7 +23,12 @@ node {
   stage('Deploy') {
     if (env.BRANCH_NAME == 'develop') {
       echo "Deploying to DEV platform"
-      //ssh user@server rm -rf /var/www/temp_deploy/dist/
+      sshPublisher(publishers: [sshPublisherDesc(configName: "hotmapsdev", transfers: [sshTransfer(
+      execCommand: '''
+          cd 
+          touch $commitId
+        ''', execTimeout: 900000, sourceFiles: '')]
+      )])
     } else if (env.BRANCH_NAME == 'master') {
       echo "Deploying to PROD platform"
       echo "Deployment to PROD is currently disabled"
@@ -41,9 +36,5 @@ node {
       echo "${env.BRANCH_NAME}: not deploying"
     }
 
-  }
-  
-  stage('Report') {
-    
   }
 }
