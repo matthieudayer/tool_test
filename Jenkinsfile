@@ -31,7 +31,7 @@ node {
               sshTransfer(
                 execCommand: '''
                   cd 
-                  touch $commitId
+                  touch "${commitId}.txt"
                 ''', 
                 execTimeout: 900000, 
                 sourceFiles: ''
