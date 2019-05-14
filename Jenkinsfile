@@ -24,6 +24,7 @@ node {
   }
   
   stage('Deploy') {
+    echo "${env.COMMIT_ID}"
     if (env.BRANCH_NAME == 'develop') {
       echo "Deploying to DEV platform"
       sshPublisher(
