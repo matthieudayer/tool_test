@@ -34,14 +34,14 @@ node {
               sshTransfer(
                 execCommand: '''
                   cd 
-                  touch "${COMMIT_ID}.txt"
+                  touch "${COMMIT_ID}"
                 ''', 
                 execTimeout: 900000, 
                 sourceFiles: ''
               )
             ], 
-            failOnError: true, 
-            paramPublish: parameters("COMMIT_ID")
+            failOnError: true//, 
+            //paramPublish: parameters(parameterName: "COMMIT_ID")
           )
         ]
       )
